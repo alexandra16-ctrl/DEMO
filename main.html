@@ -1,1 +1,685 @@
+//CONSULTA 1 - HISTORIAL CLINICO
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Historial Clínico Veterinario</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background: #eaf6ff;
+            color: #333;
+        }
+
+        .banner {
+            height: 240px;
+            background-image: url("https://images.unsplash.com/photo-1548199973-03cce0bbc87b");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner h1 {
+            background: rgba(255,255,255,0.9);
+            color: #0288D1;
+            padding: 20px 40px;
+            border-radius: 18px;
+            font-size: 38px;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: 30px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #0288D1;
+            margin-bottom: 18px;
+        }
+
+        .busqueda {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .busqueda label {
+            font-weight: bold;
+        }
+
+        .busqueda input {
+            padding: 12px;
+            width: 220px;
+            border: 2px solid #81D4FA;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        .busqueda button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #4FC3F7;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .busqueda button:hover {
+            background: #0288D1;
+        }
+
+        .mascota-card {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .mascota-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid #81D4FA;
+        }
+
+        .datos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 10px;
+        }
+
+        .datos p {
+            background: #f0fbff;
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        thead {
+            background: #4FC3F7;
+            color: white;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f0fbff;
+        }
+
+        tbody tr:hover {
+            background: #d6f4ff;
+        }
+
+        .estado {
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .definitivo {
+            background: #d6f4ff;
+            color: #0277BD;
+        }
+
+        .preventivo {
+            background: #e1f5fe;
+            color: #0288D1;
+        }
+
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 28px;
+                padding: 15px 25px;
+            }
+
+            .datos {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="banner">
+        <h1>🐾 Historial Clínico Veterinario</h1>
+    </div>
+
+    <div class="container">
+
+        <div class="card">
+            <h2>Buscar Mascota</h2>
+
+            <div class="busqueda">
+                <label for="idMascota">ID Mascota:</label>
+                <input type="number" id="idMascota" placeholder="Ejemplo: 1001">
+                <button>Buscar</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Información de la Mascota</h2>
+
+            <div class="mascota-card">
+                <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a" alt="Foto de mascota">
+
+                <div>
+                    <h2>🐶 Rocky</h2>
+
+                    <div class="datos">
+                        <p><strong>ID Mascota:</strong> 1001</p>
+                        <p><strong>Raza:</strong> Labrador</p>
+                        <p><strong>Sexo:</strong> Macho</p>
+                        <p><strong>Fecha Nacimiento:</strong> 15/08/2022</p>
+                        <p><strong>Dueño:</strong> Juan Pérez</p>
+                        <p><strong>Teléfono:</strong> 987654321</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📋 Historial Médico</h2>
+
+            <div class="datos">
+                <p><strong>ID Historial:</strong> HM-00045</p>
+                <p><strong>Fecha de Creación:</strong> 15/08/2022</p>
+                <p><strong>Grupo Sanguíneo:</strong> DEA 1.1 Positivo</p>
+                <p><strong>Alergias:</strong> Penicilina</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🩺 Atenciones Clínicas</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Veterinario</th>
+                        <th>Motivo</th>
+                        <th>Diagnóstico</th>
+                        <th>Tipo</th>
+                        <th>Medicamento</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>01/05/2026</td>
+                        <td>Dr. Carlos Pérez</td>
+                        <td>Dolor de oído</td>
+                        <td>Otitis</td>
+                        <td><span class="estado definitivo">Definitivo</span></td>
+                        <td>Amoxicilina</td>
+                    </tr>
+
+                    <tr>
+                        <td>15/03/2026</td>
+                        <td>Dra. Ana Gómez</td>
+                        <td>Vómitos y diarrea</td>
+                        <td>Gastroenteritis</td>
+                        <td><span class="estado definitivo">Definitivo</span></td>
+                        <td>Metronidazol</td>
+                    </tr>
+
+                    <tr>
+                        <td>08/01/2026</td>
+                        <td>Dr. Carlos Pérez</td>
+                        <td>Control anual</td>
+                        <td>Vacunación anual</td>
+                        <td><span class="estado preventivo">Preventivo</span></td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+// CONSULTA 2 - AGENDA DE CITAS
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Citas Veterinarias</title>
+
+    <link rel="stylesheet" href="agenda.css">
+</head>
+
+<body>
+
+    <div class="banner">
+        <h1>📅 Agenda de Citas Veterinarias</h1>
+    </div>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>Buscar Citas</h2>
+
+            <div class="filters">
+
+                <label for="fecha">Fecha:</label>
+
+                <input
+                    type="date"
+                    id="fecha"
+                    value="2026-05-21"
+                >
+
+                <label for="estado">Estado:</label>
+
+                <select id="estado">
+                    <option value="">Todos</option>
+                    <option>Confirmada</option>
+                    <option>Pendiente</option>
+                    <option>Completada</option>
+                    <option>Cancelada</option>
+                </select>
+
+                <button>Buscar</button>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Resumen del Día</h2>
+
+            <div class="resumen">
+
+                <div class="resumen-box">
+                    <h3>8</h3>
+                    <p>Total Citas</p>
+                </div>
+
+                <div class="resumen-box">
+                    <h3>3</h3>
+                    <p>Confirmadas</p>
+                </div>
+
+                <div class="resumen-box">
+                    <h3>2</h3>
+                    <p>Pendientes</p>
+                </div>
+
+                <div class="resumen-box">
+                    <h3>3</h3>
+                    <p>Completadas</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Listado de Citas</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Hora</th>
+                        <th>Mascota</th>
+                        <th>Cliente</th>
+                        <th>Veterinario</th>
+                        <th>Motivo</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>09:00</td>
+                        <td>Rocky</td>
+                        <td>Juan Pérez</td>
+                        <td>Dr. Carlos Soto</td>
+                        <td>Consulta General</td>
+                        <td>
+                            <span class="estado confirmada">
+                                Confirmada
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>10:30</td>
+                        <td>Luna</td>
+                        <td>Ana Torres</td>
+                        <td>Dra. María Díaz</td>
+                        <td>Vacunación</td>
+                        <td>
+                            <span class="estado pendiente">
+                                Pendiente
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>12:00</td>
+                        <td>Max</td>
+                        <td>Pedro Ramos</td>
+                        <td>Dr. Carlos Soto</td>
+                        <td>Control Postoperatorio</td>
+                        <td>
+                            <span class="estado completada">
+                                Completada
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>15:00</td>
+                        <td>Mía</td>
+                        <td>Lucía Fernández</td>
+                        <td>Dra. María Díaz</td>
+                        <td>Baño Medicado</td>
+                        <td>
+                            <span class="estado cancelada">
+                                Cancelada
+                            </span>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+// CONSULTA 3 - INVENTARIO DE MEDICAMENTOS
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Crítico de Medicamentos</title>
+
+    <link rel="stylesheet" href="stock.css">
+</head>
+
+<body>
+
+    <div class="banner">
+        <h1>💊 Control de Inventario Farmacéutico</h1>
+    </div>
+
+    <div class="container">
+
+        <!-- FILTROS -->
+
+        <div class="card">
+
+            <h2>🔎 Filtros de Inventario</h2>
+
+            <div class="filters">
+
+                <label for="medicamento">
+                    Medicamento:
+                </label>
+
+                <select id="medicamento">
+                    <option value="">
+                        Todos los medicamentos
+                    </option>
+
+                    <option>Amoxicilina</option>
+                    <option>Ketamina</option>
+                    <option>Meloxicam</option>
+                    <option>Cefalexina</option>
+                    <option>Metronidazol</option>
+                    <option>Enrofloxacina</option>
+                    <option>Prednisolona</option>
+                    <option>Ivermectina</option>
+                </select>
+
+                <label for="estado">
+                    Estado:
+                </label>
+
+                <select id="estado">
+                    <option>Todos los estados</option>
+                    <option>Crítico</option>
+                    <option>Bajo</option>
+                    <option>Normal</option>
+                </select>
+
+                <button>
+                    Buscar
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- RESUMEN -->
+
+        <div class="card">
+
+            <h2>📊 Resumen de Inventario</h2>
+
+            <div class="resumen">
+
+                <div class="resumen-box">
+                    <h3>2</h3>
+                    <p>Stock Crítico</p>
+                </div>
+
+                <div class="resumen-box">
+                    <h3>5</h3>
+                    <p>Lotes por Vencer</p>
+                </div>
+
+                <div class="resumen-box">
+                    <h3>1240</h3>
+                    <p>Unidades Disponibles</p>
+                </div>
+
+                <div class="resumen-box">
+                    <h3>50</h3>
+                    <p>Medicamentos Registrados</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- STOCK CRÍTICO -->
+
+        <div class="card">
+
+            <h2>🚨 Medicamentos con Stock Crítico</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Medicamento</th>
+                        <th>Lote</th>
+                        <th>Stock Actual</th>
+                        <th>Stock Inicial</th>
+                        <th>% Disponible</th>
+                        <th>Caducidad</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Amoxicilina</td>
+                        <td>LOT-001</td>
+                        <td>12</td>
+                        <td>100</td>
+                        <td>12%</td>
+                        <td>15/07/2026</td>
+                        <td>
+                            <span class="estado critico">
+                                🔴 Crítico
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Ketamina</td>
+                        <td>LOT-008</td>
+                        <td>8</td>
+                        <td>80</td>
+                        <td>10%</td>
+                        <td>02/08/2026</td>
+                        <td>
+                            <span class="estado critico">
+                                🔴 Crítico
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Meloxicam</td>
+                        <td>LOT-012</td>
+                        <td>22</td>
+                        <td>100</td>
+                        <td>22%</td>
+                        <td>10/12/2026</td>
+                        <td>
+                            <span class="estado bajo">
+                                🟠 Bajo
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Cefalexina</td>
+                        <td>LOT-025</td>
+                        <td>75</td>
+                        <td>100</td>
+                        <td>75%</td>
+                        <td>15/01/2027</td>
+                        <td>
+                            <span class="estado normal">
+                                🟢 Normal
+                            </span>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- LOTES POR VENCER -->
+
+        <div class="card">
+
+            <h2>⚠️ Lotes Próximos a Vencer</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Medicamento</th>
+                        <th>Lote</th>
+                        <th>Fecha de Caducidad</th>
+                        <th>Días Restantes</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Amoxicilina</td>
+                        <td>LOT-001</td>
+                        <td>15/07/2026</td>
+                        <td>45 días</td>
+                    </tr>
+
+                    <tr>
+                        <td>Ketamina</td>
+                        <td>LOT-008</td>
+                        <td>02/08/2026</td>
+                        <td>63 días</td>
+                    </tr>
+
+                    <tr>
+                        <td>Metronidazol</td>
+                        <td>LOT-010</td>
+                        <td>20/08/2026</td>
+                        <td>81 días</td>
+                    </tr>
+
+                    <tr>
+                        <td>Enrofloxacina</td>
+                        <td>LOT-014</td>
+                        <td>05/09/2026</td>
+                        <td>97 días</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
 
