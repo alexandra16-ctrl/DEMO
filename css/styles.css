@@ -1,1 +1,529 @@
+// CONSULTA 1 - HISTORIAL CLINICO
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+body{
+    background:#eaf6ff;
+}
+
+/* Banner superior */
+
+.banner{
+    height:250px;
+    background-image:url("https://images.unsplash.com/photo-1548199973-03cce0bbc87b");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.banner h1{
+    background:rgba(255,255,255,0.85);
+    padding:20px 40px;
+    border-radius:15px;
+    color:#0288D1;
+    font-size:40px;
+}
+
+/* Contenedor principal */
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:30px auto;
+}
+
+.busqueda,
+.info-mascota,
+.historial{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    margin-bottom:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Inputs */
+
+.busqueda input{
+    padding:12px;
+    width:220px;
+    border:2px solid #81D4FA;
+    border-radius:10px;
+}
+
+.busqueda button{
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    background:#4FC3F7;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.busqueda button:hover{
+    background:#0288D1;
+}
+
+/* Tarjeta mascota */
+
+.info-mascota h2,
+.historial h2{
+    color:#0288D1;
+    margin-bottom:15px;
+}
+
+.datos{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.mascota-card{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.mascota-card img{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid #81D4FA;
+}
+
+/* Tabla */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#4FC3F7;
+    color:white;
+}
+
+th, td{
+    padding:15px;
+    text-align:left;
+}
+
+tbody tr{
+    border-bottom:1px solid #ddd;
+}
+
+tbody tr:nth-child(even){
+    background:#f0fbff;
+}
+
+tbody tr:hover{
+    background:#d6f4ff;
+}
+
+// CONSULTA 2 - CALENDARIO
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background: #eaf6ff;
+    color: #333;
+}
+
+/* Banner */
+
+.banner {
+    height: 250px;
+    background-image: url("https://images.unsplash.com/photo-1583337130417-3346a1be7dee");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner h1 {
+    background: rgba(255,255,255,0.9);
+    color: #0288D1;
+    padding: 20px 40px;
+    border-radius: 18px;
+    font-size: 38px;
+}
+
+/* Contenedor */
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+/* Tarjetas */
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+    color: #0288D1;
+    margin-bottom: 20px;
+}
+
+/* Filtros */
+
+.filters {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filters label {
+    font-weight: 600;
+}
+
+.filters input,
+.filters select {
+    padding: 12px;
+    border: 2px solid #81D4FA;
+    border-radius: 10px;
+    outline: none;
+}
+
+.filters input:focus,
+.filters select:focus {
+    border-color: #0288D1;
+}
+
+/* Botón */
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #4FC3F7;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0288D1;
+}
+
+/* Resumen */
+
+.resumen {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.resumen-box {
+    background: #f0fbff;
+    border: 2px solid #b3e5fc;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.resumen-box h3 {
+    color: #0288D1;
+    font-size: 32px;
+}
+
+.resumen-box p {
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+/* Tabla */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #4FC3F7;
+    color: white;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background: #f0fbff;
+}
+
+tbody tr:hover {
+    background: #d6f4ff;
+}
+
+/* Estados */
+
+.estado {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.confirmada {
+    background: #d6f4ff;
+    color: #0277BD;
+}
+
+.pendiente {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.completada {
+    background: #d4edda;
+    color: #155724;
+}
+
+.cancelada {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+
+    .resumen {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .banner h1 {
+        font-size: 28px;
+        padding: 15px 25px;
+        text-align: center;
+    }
+
+    .resumen {
+        grid-template-columns: 1fr;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th,
+    td {
+        padding: 10px;
+    }
+
+}
+
+// CONSULTA 3 - INVENTARIO 
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', Arial, sans-serif;
+}
+
+body{
+    background:#eaf6ff;
+    color:#333;
+}
+
+.banner{
+    height:250px;
+    background-image:url("https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.banner h1{
+    background:rgba(255,255,255,0.9);
+    color:#0288D1;
+    padding:20px 40px;
+    border-radius:18px;
+    font-size:38px;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:30px auto;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    margin-bottom:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card h2{
+    color:#0288D1;
+    margin-bottom:20px;
+}
+
+.filters{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.filters input,
+.filters select{
+    padding:12px;
+    border:2px solid #81D4FA;
+    border-radius:10px;
+    min-width:220px;
+}
+
+.filters input:focus,
+.filters select:focus{
+    outline:none;
+    border-color:#0288D1;
+}
+
+button{
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    background:#4FC3F7;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0288D1;
+}
+
+.resumen{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.resumen-box{
+    background:#f0fbff;
+    border:2px solid #b3e5fc;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.resumen-box h3{
+    color:#0288D1;
+    font-size:32px;
+}
+
+.resumen-box p{
+    margin-top:8px;
+    font-weight:bold;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#4FC3F7;
+    color:white;
+}
+
+th,
+td{
+    padding:15px;
+    text-align:left;
+    border-bottom:1px solid #ddd;
+}
+
+tbody tr:nth-child(even){
+    background:#f0fbff;
+}
+
+tbody tr:hover{
+    background:#d6f4ff;
+}
+
+.estado{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.critico{
+    background:#fde2e2;
+    color:#c62828;
+}
+
+.bajo{
+    background:#fff3cd;
+    color:#856404;
+}
+
+.normal{
+    background:#d4edda;
+    color:#155724;
+}
+
+@media (max-width:900px){
+
+    .resumen{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media (max-width:600px){
+
+    .banner h1{
+        font-size:28px;
+        text-align:center;
+    }
+
+    .resumen{
+        grid-template-columns:1fr;
+    }
+
+    table{
+        font-size:14px;
+    }
+
+    th,
+    td{
+        padding:10px;
+    }
+
+}
