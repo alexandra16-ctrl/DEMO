@@ -1,0 +1,231 @@
+-- ==========================================
+-- SOS VETERINARIA
+-- PARTE 1
+-- MODULO PERSONAS
+-- ==========================================
+
+CREATE TABLE Persona(
+id_persona SERIAL PRIMARY KEY,
+dni VARCHAR(8) UNIQUE NOT NULL,
+nombres VARCHAR(50) NOT NULL,
+apellidos VARCHAR(50) NOT NULL,
+telefono VARCHAR(15),
+email VARCHAR(100) UNIQUE
+);
+
+CREATE TABLE Cliente(
+id_persona INT PRIMARY KEY,
+direccion_principal VARCHAR(150) NOT NULL,
+contacto_emergencia VARCHAR(100),
+
+```
+CONSTRAINT fk_cliente_persona
+FOREIGN KEY(id_persona)
+REFERENCES Persona(id_persona)
+```
+
+);
+
+CREATE TABLE Empleado(
+id_persona INT PRIMARY KEY,
+codigo_empleado VARCHAR(20) UNIQUE NOT NULL,
+fecha_contratacion DATE NOT NULL,
+salario DECIMAL(10,2),
+
+```
+CONSTRAINT fk_empleado_persona
+FOREIGN KEY(id_persona)
+REFERENCES Persona(id_persona)
+```
+
+);
+
+CREATE TABLE Veterinario(
+id_persona INT PRIMARY KEY,
+cmpv VARCHAR(15) UNIQUE NOT NULL,
+especialidad VARCHAR(50),
+
+```
+CONSTRAINT fk_veterinario_empleado
+FOREIGN KEY(id_persona)
+REFERENCES Empleado(id_persona)
+```
+
+);
+
+CREATE TABLE Personal_Apoyo(
+id_persona INT PRIMARY KEY,
+rol VARCHAR(30) NOT NULL,
+licencia_conducir VARCHAR(20),
+
+```
+CONSTRAINT fk_apoyo_empleado
+FOREIGN KEY(id_persona)
+REFERENCES Empleado(id_persona)
+```
+
+);
+
+-- ==========================================
+-- MODULO PACIENTES
+-- ==========================================
+
+CREATE TABLE Especie(
+id_especie SERIAL PRIMARY KEY,
+nombre_especie VARCHAR(50) UNIQUE NOT NULL
+);
+
+CREATE TABLE Raza(
+id_raza SERIAL PRIMARY KEY,
+nombre_raza VARCHAR(50) NOT NULL,
+
+```
+id_especie INT NOT NULL,
+
+CONSTRAINT fk_raza_especie
+FOREIGN KEY(id_especie)
+REFERENCES Especie(id_especie)
+```
+
+);
+
+CREATE TABLE Mascota(
+id_mascota SERIAL PRIMARY KEY,
+nombre VARCHAR(50) NOT NULL,
+fecha_nacimiento DATE,
+sexo CHAR(1) NOT NULL,
+
+```
+id_raza INT NOT NULL,
+id_cliente INT NOT NULL,
+
+CONSTRAINT chk_sexo
+CHECK (sexo IN ('M','H')),
+
+CONSTRAINT fk_mascota_raza
+FOREIGN KEY(id_raza)
+REFERENCES Raza(id_raza),
+
+CONSTRAINT fk_mascota_cliente
+FOREIGN KEY(id_cliente)
+REFERENCES Cliente(id_persona)
+```
+
+);
+
+CREATE TABLE Historial_Medico(
+id_historial SERIAL PRIMARY KEY,
+
+```
+id_mascota INT UNIQUE NOT NULL,
+
+fecha_creacion TIMESTAMP NOT NULL,
+
+grupo_sanguineo VARCHAR(20),
+alergias_conocidas TEXT,
+
+CONSTRAINT fk_historial_mascota
+FOREIGN KEY(id_mascota)
+REFERENCES Mascota(id_mascota)
+```
+
+);
+
+-- ==========================================
+-- MODULO CATALOGO
+-- ==========================================
+
+CREATE TABLE Item_Catalogo(
+id_item SERIAL PRIMARY KEY,
+
+```
+nombre VARCHAR(100) NOT NULL,
+
+precio_base DECIMAL(10,2) NOT NULL,
+
+tipo_item VARCHAR(20) NOT NULL,
+
+CONSTRAINT chk_tipo_item
+CHECK (
+  tipo_item IN
+  ('Servicio','Articulo','Medicamento')
+)
+```
+
+);
+
+CREATE TABLE Servicio(
+id_item INT PRIMARY KEY,
+
+```
+requiere_veterinario BOOLEAN NOT NULL,
+
+tiempo_estimado_min INT,
+
+CONSTRAINT fk_servicio_item
+FOREIGN KEY(id_item)
+REFERENCES Item_Catalogo(id_item)
+```
+
+);
+
+CREATE TABLE Articulo_Petshop(
+id_item INT PRIMARY KEY,
+
+```
+marca VARCHAR(50),
+
+categoria VARCHAR(50) NOT NULL,
+
+stock_general INT DEFAULT 0,
+
+CONSTRAINT chk_stock_general
+CHECK(stock_general >= 0),
+
+CONSTRAINT fk_articulo_item
+FOREIGN KEY(id_item)
+REFERENCES Item_Catalogo(id_item)
+```
+
+);
+
+CREATE TABLE Medicamento(
+id_item INT PRIMARY KEY,
+
+```
+principio_activo VARCHAR(100) NOT NULL,
+
+concentracion VARCHAR(50),
+
+presentacion VARCHAR(50),
+
+requiere_receta BOOLEAN NOT NULL,
+
+CONSTRAINT fk_medicamento_item
+FOREIGN KEY(id_item)
+REFERENCES Item_Catalogo(id_item)
+```
+
+);
+
+CREATE TABLE Lote_Inventario(
+id_lote SERIAL PRIMARY KEY,
+
+```
+id_medicamento INT NOT NULL,
+
+fecha_caducidad DATE NOT NULL,
+
+cantidad_inicial INT NOT NULL,
+
+stock_actual INT NOT NULL,
+
+CONSTRAINT chk_stock_actual
+CHECK(stock_actual >= 0),
+
+CONSTRAINT fk_lote_medicamento
+FOREIGN KEY(id_medicamento)
+REFERENCES Medicamento(id_item)
+```
+
+);
